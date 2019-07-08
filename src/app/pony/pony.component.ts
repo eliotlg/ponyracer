@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { PonyModel } from '../models/pony.model';
 
 @Component({
@@ -11,7 +12,7 @@ export class PonyComponent implements OnInit {
   @Input() ponyModel: PonyModel;
   @Output() readonly ponyClicked = new EventEmitter<PonyModel>();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }

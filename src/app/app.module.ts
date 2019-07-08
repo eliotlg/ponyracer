@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+
 import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -27,8 +27,8 @@ import { RegisterComponent } from './register/register.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
   bootstrap: [AppComponent]

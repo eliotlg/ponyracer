@@ -1,12 +1,15 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-  <a class="navbar-brand" href="" routerLink="/">PonyRacer</a>
-  <button type="button" class="navbar-toggler navbar-toggler-right" (click)="toggleNavbar()">
+  <a class="navbar-brand" routerLink="/">PonyRacer</a>
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div id="navbar" class="navbar-collapse" [class.collapse]="navbarCollapsed">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="" routerLink="/races">Races</a>
+        <a class="nav-link" routerLink="/races">Races</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register">Register</a>
       </li>
     </ul>
   </div>
