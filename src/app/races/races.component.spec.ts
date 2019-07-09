@@ -9,30 +9,31 @@ import { RaceService } from '../race.service';
 import { FromNowPipe } from '../from-now.pipe';
 
 describe('RacesComponent', () => {
-
   const service = jasmine.createSpyObj('RaceService', ['list']);
 
-  beforeEach(() => TestBed.configureTestingModule({
-    declarations: [RacesComponent, RaceComponent, PonyComponent, FromNowPipe],
-    providers: [{ provide: RaceService, useValue: service }]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      declarations: [RacesComponent, RaceComponent, PonyComponent, FromNowPipe],
+      providers: [{ provide: RaceService, useValue: service }]
+    })
+  );
 
   it('should display every race name in a title', () => {
-    service.list.and.returnValue(of([
-      { name: 'Lyon' },
-      { name: 'Los Angeles' },
-      { name: 'Sydney' },
-      { name: 'Tokyo' },
-      { name: 'Casablanca' }
-    ]));
+    service.list.and.returnValue(
+      of([{ name: 'Lyon' }, { name: 'Los Angeles' }, { name: 'Sydney' }, { name: 'Tokyo' }, { name: 'Casablanca' }])
+    );
 
     const fixture = TestBed.createComponent(RacesComponent);
     fixture.detectChanges();
 
     expect(service.list).toHaveBeenCalled();
 
-    expect(fixture.componentInstance.races).withContext('You need to have a field `races` initialized with 5 races').not.toBeNull();
-    expect(fixture.componentInstance.races.length).withContext('You need to have a field `races` initialized with 5 races').toBe(5);
+    expect(fixture.componentInstance.races)
+      .withContext('You need to have a field `races` initialized with 5 races')
+      .not.toBeNull();
+    expect(fixture.componentInstance.races.length)
+      .withContext('You need to have a field `races` initialized with 5 races')
+      .toBe(5);
     expect(fixture.componentInstance.races[0].name).toBe('Lyon');
     expect(fixture.componentInstance.races[1].name).toBe('Los Angeles');
     expect(fixture.componentInstance.races[2].name).toBe('Sydney');
@@ -41,6 +42,8 @@ describe('RacesComponent', () => {
 
     const debugElement = fixture.debugElement;
     const raceNames = debugElement.queryAll(By.directive(RaceComponent));
-    expect(raceNames.length).withContext('You should have four `RaceComponent` displayed').toBe(4);
+    expect(raceNames.length)
+      .withContext('You should have four `RaceComponent` displayed')
+      .toBe(4);
   });
 });

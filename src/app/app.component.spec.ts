@@ -6,11 +6,12 @@ import { MenuComponent } from './menu/menu.component';
 import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
-
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent, MenuComponent]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
+      declarations: [AppComponent, MenuComponent]
+    })
+  );
 
   it('should have a router outlet', () => {
     const fixture = TestBed.createComponent(AppComponent);

@@ -7,10 +7,11 @@ import { PonyComponent } from '../pony/pony.component';
 import { FromNowPipe } from '../from-now.pipe';
 
 describe('RaceComponent', () => {
-
-  beforeEach(() => TestBed.configureTestingModule({
-    declarations: [RaceComponent, PonyComponent, FromNowPipe]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      declarations: [RaceComponent, PonyComponent, FromNowPipe]
+    })
+  );
 
   it('should display a race name and its ponies', () => {
     const fixture = TestBed.createComponent(RaceComponent);
@@ -36,15 +37,23 @@ describe('RaceComponent', () => {
     // then we should have the name and ponies displayed in the template
     const element = fixture.nativeElement;
     const raceName = element.querySelector('h2');
-    expect(raceName).withContext('You need an h2 element for the race name').not.toBeNull();
-    expect(raceName.textContent).withContext('The h2 element should contain the race name').toContain('Paris');
+    expect(raceName)
+      .withContext('You need an h2 element for the race name')
+      .not.toBeNull();
+    expect(raceName.textContent)
+      .withContext('The h2 element should contain the race name')
+      .toContain('Paris');
     const directives = fixture.debugElement.queryAll(By.directive(PonyComponent));
     expect(directives)
       .withContext('You should use the PonyComponent in your template to display the ponies')
       .not.toBeNull();
-    expect(directives.length).withContext('You should have five pony components in your template').toBe(5);
+    expect(directives.length)
+      .withContext('You should have five pony components in your template')
+      .toBe(5);
     const startInstant = element.querySelector('p');
-    expect(startInstant).withContext('You should use a `p` element to display the start instant').not.toBeNull();
+    expect(startInstant)
+      .withContext('You should use a `p` element to display the start instant')
+      .not.toBeNull();
     expect(startInstant.textContent)
       .withContext('You should use the `fromNow` pipe you created to format the start instant')
       .toBe(moment(raceComponent.raceModel.startInstant).fromNow());

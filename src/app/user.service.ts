@@ -6,13 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   register(login: string, password: string, birthYear: number): Observable<any> {
     const body = { login, password, birthYear };
     return this.http.post('http://ponyracer.ninja-squad.com/api/users', body);
   }
-
 }

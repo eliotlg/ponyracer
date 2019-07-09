@@ -2,7 +2,6 @@ import { FromNowPipe } from './from-now.pipe';
 import * as moment from 'moment';
 
 describe('FromNowPipe', () => {
-
   it('should transform the input', () => {
     // given a pipe
     const pipe = new FromNowPipe();

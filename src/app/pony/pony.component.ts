@@ -8,14 +8,12 @@ import { PonyModel } from '../models/pony.model';
   styleUrls: ['./pony.component.css']
 })
 export class PonyComponent implements OnInit {
-
   @Input() ponyModel: PonyModel;
   @Output() readonly ponyClicked = new EventEmitter<PonyModel>();
 
   constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   getPonyImageUrl() {
     return `assets/images/pony-${this.ponyModel.color.toLowerCase()}.gif`;
@@ -24,5 +22,4 @@ export class PonyComponent implements OnInit {
   clicked() {
     this.ponyClicked.emit(this.ponyModel);
   }
-
 }

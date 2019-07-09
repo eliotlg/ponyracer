@@ -8,18 +8,16 @@ import { RegisterComponent } from './register.component';
 import { UserService } from '../user.service';
 
 describe('RegisterComponent', () => {
-
   const fakeUserService = jasmine.createSpyObj('UserService', ['register']);
   const fakeRouter = jasmine.createSpyObj('Router', ['navigate']);
 
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [ReactiveFormsModule],
-    declarations: [RegisterComponent],
-    providers: [
-      { provide: UserService, useValue: fakeUserService },
-      { provide: Router, useValue: fakeRouter }
-    ]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule],
+      declarations: [RegisterComponent],
+      providers: [{ provide: UserService, useValue: fakeUserService }, { provide: Router, useValue: fakeRouter }]
+    })
+  );
 
   beforeEach(() => {
     fakeUserService.register.calls.reset();
@@ -35,7 +33,8 @@ describe('RegisterComponent', () => {
 
     expect(fixture.componentInstance.register).toHaveBeenCalled();
     expect((fixture.componentInstance.register as jasmine.Spy).calls.count())
-      .withContext('Looks like you are calling register several times!').toBe(1);
+      .withContext('Looks like you are calling register several times!')
+      .toBe(1);
   });
 
   it('should display a form to register', () => {
@@ -46,18 +45,34 @@ describe('RegisterComponent', () => {
     const userForm = fixture.componentInstance.userForm;
 
     expect(userForm.valid).toBe(false);
-    expect(userForm.get('login')).withContext('Your form should have a `login` field').not.toBeNull();
-    expect(userForm.get('login').getError('required')).withContext('The `login` field should be required').toBe(true);
-    expect(userForm.get('birthYear')).withContext('Your form should have a `birthYear` field').not.toBeNull();
+    expect(userForm.get('login'))
+      .withContext('Your form should have a `login` field')
+      .not.toBeNull();
+    expect(userForm.get('login').getError('required'))
+      .withContext('The `login` field should be required')
+      .toBe(true);
+    expect(userForm.get('birthYear'))
+      .withContext('Your form should have a `birthYear` field')
+      .not.toBeNull();
     userForm.get('birthYear').setValue('');
     fixture.detectChanges();
-    expect(userForm.get('birthYear').getError('required')).withContext('The `birthYear` field should be required').toBe(true);
+    expect(userForm.get('birthYear').getError('required'))
+      .withContext('The `birthYear` field should be required')
+      .toBe(true);
     const passwordForm = fixture.componentInstance.passwordForm;
-    expect(passwordForm).withContext('Your component should have a field `passwordForm`').not.toBeNull();
+    expect(passwordForm)
+      .withContext('Your component should have a field `passwordForm`')
+      .not.toBeNull();
     expect(passwordForm.valid).toBe(false);
-    expect(passwordForm.get('password')).withContext('Your password form should have a `password` field').not.toBeNull();
-    expect(passwordForm.get('password').getError('required')).withContext('The `password` field should be required').toBe(true);
-    expect(passwordForm.get('confirmPassword')).withContext('Your password form should have a `confirmPassword` field').not.toBeNull();
+    expect(passwordForm.get('password'))
+      .withContext('Your password form should have a `password` field')
+      .not.toBeNull();
+    expect(passwordForm.get('password').getError('required'))
+      .withContext('The `password` field should be required')
+      .toBe(true);
+    expect(passwordForm.get('confirmPassword'))
+      .withContext('Your password form should have a `confirmPassword` field')
+      .not.toBeNull();
     expect(passwordForm.get('confirmPassword').getError('required')).toBe(true);
 
     fixture.detectChanges();
@@ -65,9 +80,13 @@ describe('RegisterComponent', () => {
     // when adding invalid values in the form
     const nativeElement = fixture.nativeElement;
     const button = nativeElement.querySelector('button');
-    expect(button.getAttribute('disabled')).withContext('Your submit button should be disabled if the form is invalid').not.toBeNull();
+    expect(button.getAttribute('disabled'))
+      .withContext('Your submit button should be disabled if the form is invalid')
+      .not.toBeNull();
     const login = nativeElement.querySelector('input');
-    expect(login).withContext('Your template should have an input for the login').not.toBeNull();
+    expect(login)
+      .withContext('Your template should have an input for the login')
+      .not.toBeNull();
     login.value = 'Cédric';
     login.dispatchEvent(new Event('input'));
     login.value = '';
@@ -75,14 +94,20 @@ describe('RegisterComponent', () => {
     fixture.detectChanges();
 
     const loginError = nativeElement.querySelector('div.form-group div');
-    expect(loginError).withContext('You should have an error message if the login field is required and dirty').not.toBeNull();
-    expect(loginError.textContent).withContext('The error message for the login field is incorrect').toBe('Login is required');
+    expect(loginError)
+      .withContext('You should have an error message if the login field is required and dirty')
+      .not.toBeNull();
+    expect(loginError.textContent)
+      .withContext('The error message for the login field is incorrect')
+      .toBe('Login is required');
 
     login.value = 'Cédric';
     login.dispatchEvent(new Event('input'));
 
     const password = nativeElement.querySelector('[type="password"]');
-    expect(password).withContext('Your template should have a password input for the password').not.toBeNull();
+    expect(password)
+      .withContext('Your template should have a password input for the password')
+      .not.toBeNull();
     password.value = 'password';
     password.dispatchEvent(new Event('input'));
     password.value = '';
@@ -90,14 +115,20 @@ describe('RegisterComponent', () => {
     fixture.detectChanges();
 
     const passwordError = nativeElement.querySelector('div.form-group div');
-    expect(passwordError).withContext('You should have an error message if the password field is required and dirty').not.toBeNull();
-    expect(passwordError.textContent).withContext('The error message for the password field is incorrect').toBe('Password is required');
+    expect(passwordError)
+      .withContext('You should have an error message if the password field is required and dirty')
+      .not.toBeNull();
+    expect(passwordError.textContent)
+      .withContext('The error message for the password field is incorrect')
+      .toBe('Password is required');
 
     password.value = 'password';
     password.dispatchEvent(new Event('input'));
 
     const confirmPassword = nativeElement.querySelectorAll('[type="password"]')[1];
-    expect(confirmPassword).withContext('Your template should have a password input for the confirm password').not.toBeNull();
+    expect(confirmPassword)
+      .withContext('Your template should have a password input for the confirm password')
+      .not.toBeNull();
     confirmPassword.value = 'password';
     confirmPassword.dispatchEvent(new Event('input'));
     confirmPassword.value = '';
@@ -105,16 +136,20 @@ describe('RegisterComponent', () => {
     fixture.detectChanges();
 
     const confirmPasswordError = nativeElement.querySelector('div.form-group div');
-    expect(confirmPasswordError).withContext('You should have an error message if the confirm password field is required and dirty')
+    expect(confirmPasswordError)
+      .withContext('You should have an error message if the confirm password field is required and dirty')
       .not.toBeNull();
-    expect(confirmPasswordError.textContent).withContext('The error message for the confirm password field is incorrect')
-      .toBe('Confirming password is required');
+    expect(confirmPasswordError.textContent)
+      .withContext('The error message for the confirm password field is incorrect')
+      .toContain('Confirming password is required');
 
     confirmPassword.value = 'password';
     confirmPassword.dispatchEvent(new Event('input'));
 
     const birthYear = nativeElement.querySelector('[type="number"]');
-    expect(birthYear).withContext('Your template should have a number input for the birthYear').not.toBeNull();
+    expect(birthYear)
+      .withContext('Your template should have a number input for the birthYear')
+      .not.toBeNull();
     birthYear.value = 1986;
     birthYear.dispatchEvent(new Event('input'));
     birthYear.value = '';
@@ -122,8 +157,12 @@ describe('RegisterComponent', () => {
     fixture.detectChanges();
 
     const birthYearError = nativeElement.querySelector('div.form-group div');
-    expect(birthYearError).withContext('You should have an error message if the birthYear field is required and dirty').not.toBeNull();
-    expect(birthYearError.textContent).withContext('The error message for the birthYear field is incorrect').toBe('Birth year is required');
+    expect(birthYearError)
+      .withContext('You should have an error message if the birthYear field is required and dirty')
+      .not.toBeNull();
+    expect(birthYearError.textContent)
+      .withContext('The error message for the birthYear field is incorrect')
+      .toBe('Birth year is required');
 
     // when adding correct values in the form
     birthYear.value = 1986;
@@ -132,7 +171,9 @@ describe('RegisterComponent', () => {
 
     // then we should have a valid form, with no error
     expect(userForm.valid).toBe(true);
-    expect(button.getAttribute('disabled')).withContext('Your submit button should not be disabled if the form is invalid').toBeNull();
+    expect(button.getAttribute('disabled'))
+      .withContext('Your submit button should not be disabled if the form is invalid')
+      .toBeNull();
     expect(userForm.value).toEqual({
       login: 'Cédric',
       passwordForm: { password: 'password', confirmPassword: 'password' },
@@ -142,7 +183,6 @@ describe('RegisterComponent', () => {
     expect(passwordForm.get('password').getError('required')).toBe(null);
     expect(passwordForm.get('confirmPassword').getError('required')).toBe(null);
     expect(userForm.get('birthYear').getError('required')).toBe(null);
-
   });
 
   it('should expect a login with 3 characters', () => {
@@ -193,7 +233,8 @@ describe('RegisterComponent', () => {
 
     // then we should have an error
     expect(match.matchingError)
-      .withContext('Your `passwordMatch` validator should return a `matchingError` if the passwords don\'t match').toBe(true);
+      .withContext('Your `passwordMatch` validator should return a `matchingError` if the passwords do not match')
+      .toBe(true);
 
     // when the passwords match
     const passwordForm = new FormGroup({
@@ -203,7 +244,9 @@ describe('RegisterComponent', () => {
     const matchNoError = RegisterComponent.passwordMatch(passwordForm);
 
     // then we should have no error
-    expect(matchNoError).withContext('Your `passwordMatch` validator should return `null` if the passwords match').toBe(null);
+    expect(matchNoError)
+      .withContext('Your `passwordMatch` validator should return `null` if the passwords match')
+      .toBe(null);
   });
 
   it('should have a password confirmation', () => {
@@ -254,7 +297,9 @@ describe('RegisterComponent', () => {
     expect(passwordForm.get('confirmPassword').getError('required')).toBe(null);
     // message no longer displayed
     const noMatchingErrorMessage = nativeElement.querySelector('#password-matching-error');
-    expect(noMatchingErrorMessage).withContext('Your error message should disappear when there is no error').toBe(null);
+    expect(noMatchingErrorMessage)
+      .withContext('Your error message should disappear when there is no error')
+      .toBe(null);
   });
 
   it('should have min/max validators to check the year validity', () => {
@@ -287,7 +332,9 @@ describe('RegisterComponent', () => {
     fixture.detectChanges();
 
     // then we should have an error
-    expect(birthYearCtrl.hasError('max')).withContext('`birthYearCtrl` should have a `max` validator set to the next year').toBe(true);
+    expect(birthYearCtrl.hasError('max'))
+      .withContext('`birthYearCtrl` should have a `max` validator set to the next year')
+      .toBe(true);
     invalidYearError = nativeElement.querySelector('#invalid-year-error');
     expect(invalidYearError)
       .withContext('A div with the id `invalid-year-error` must be displayed if the year is after next year')
@@ -300,10 +347,16 @@ describe('RegisterComponent', () => {
     fixture.detectChanges();
 
     // then we should have no error
-    expect(birthYearCtrl.hasError('min')).withContext('`birthYearCtrl` should have a `min` validator set to 1900').toBe(false);
+    expect(birthYearCtrl.hasError('min'))
+      .withContext('`birthYearCtrl` should have a `min` validator set to 1900')
+      .toBe(false);
     invalidYearError = nativeElement.querySelector('#invalid-year-error');
-    expect(birthYearCtrl.hasError('max')).withContext('`birthYearCtrl` should have a `max` validator set to the next year').toBe(false);
-    expect(invalidYearError).withContext('A div with the id `invalid-year-error` must not be displayed if the year is valid').toBeNull();
+    expect(birthYearCtrl.hasError('max'))
+      .withContext('`birthYearCtrl` should have a `max` validator set to the next year')
+      .toBe(false);
+    expect(invalidYearError)
+      .withContext('A div with the id `invalid-year-error` must not be displayed if the year is valid')
+      .toBeNull();
   });
 
   it('should call the user service to register', () => {
@@ -354,5 +407,4 @@ describe('RegisterComponent', () => {
       .not.toBeNull();
     expect(errorMessage.textContent).toContain('Try again with another login.');
   });
-
 });

@@ -4,13 +4,14 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { UserService } from './user.service';
 
 describe('UserService', () => {
-
   let userService: UserService;
   let http: HttpTestingController;
 
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [HttpClientTestingModule]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule]
+    })
+  );
 
   beforeEach(() => {
     userService = TestBed.get(UserService);
@@ -30,12 +31,14 @@ describe('UserService', () => {
     };
 
     let actualUser;
-    userService.register(user.login, 'password', 1986).subscribe(fetchedUser => actualUser = fetchedUser);
+    userService.register(user.login, 'password', 1986).subscribe(fetchedUser => (actualUser = fetchedUser));
 
     const req = http.expectOne({ method: 'POST', url: 'http://ponyracer.ninja-squad.com/api/users' });
     expect(req.request.body).toEqual({ login: user.login, password: 'password', birthYear: 1986 });
     req.flush(user);
 
-    expect(actualUser).withContext('You should emit the user.').toBe(user);
+    expect(actualUser)
+      .withContext('You should emit the user.')
+      .toBe(user);
   });
 });
