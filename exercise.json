@@ -1,1 +1,1 @@
-{"pack":"38","id":15,"title":"Logged home","specs":[{"name":"src/app/home/home.component.spec.ts","hash":"6a69ae1a31a514302c96a830e4efb049e077a32c"},{"name":"src/app/menu/menu.component.spec.ts","hash":"f40fdc6159bb3ae3f9d36a0a5409d4c47f803412"}]}
+{"pack":"38","id":17,"title":"Logout","specs":[{"name":"src/app/menu/menu.component.spec.ts","hash":"316b337df0785d56068a82cbb4cc759f4c700199"},{"name":"src/app/user.service.spec.ts","hash":"ca9ac343553b837f881424cd91b1977bab8d310f"}]}

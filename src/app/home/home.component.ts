@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { UserModel } from '../models/user.model';
@@ -23,5 +23,4 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.userEventsSubscription.unsubscribe();
     }
   }
-
 }
