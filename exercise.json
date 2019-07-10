@@ -1,1 +1,1 @@
-{"pack":"38","id":12,"title":"Custom validators in forms","specs":[{"name":"src/app/register/register.component.spec.ts","hash":"4cc512ef161aa517a8bfc7c3fe63993870ff4090"},{"name":"src/app/user.service.spec.ts","hash":"c7670dc7a46d1e600c16f7982f5c00bf315a4c57"}]}
+{"pack":"38","id":15,"title":"Logged home","specs":[{"name":"src/app/home/home.component.spec.ts","hash":"6a69ae1a31a514302c96a830e4efb049e077a32c"},{"name":"src/app/menu/menu.component.spec.ts","hash":"f40fdc6159bb3ae3f9d36a0a5409d4c47f803412"}]}
