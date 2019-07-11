@@ -1,1 +1,1 @@
-{"pack":"38","id":17,"title":"Logout","specs":[{"name":"src/app/menu/menu.component.spec.ts","hash":"316b337df0785d56068a82cbb4cc759f4c700199"},{"name":"src/app/user.service.spec.ts","hash":"ca9ac343553b837f881424cd91b1977bab8d310f"}]}
+{"pack":"38","id":19,"title":"Bet on a pony","specs":[{"name":"src/app/bet/bet.component.spec.ts","hash":"3489760433a17072ba09770312047422c4841f4f"},{"name":"src/app/race.service.spec.ts","hash":"ca38085f82322aaf599c3f389f45d3cea780ba21"},{"name":"src/app/races/races.component.spec.ts","hash":"8460f63ce4761c555d1379776c26e9b33949a653"}]}
